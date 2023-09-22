@@ -8,28 +8,29 @@ public class ProductImage {
     @Id
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product productId;
+    private Product product;
     @JoinColumn(name = "image_id")
     private long imageId;
-    private String alternative;
+    @Column(name = "path")
     private String path;
-
-    public ProductImage(Product productId, long imageId, String alternative, String path) {
-        this.productId = productId;
-        this.imageId = imageId;
-        this.alternative = alternative;
-        this.path = path;
-    }
-
+    @Column(name = "alternative")
+    private String alternative;
     public ProductImage() {
     }
 
-    public Product getProductId() {
-        return productId;
+    public ProductImage(Product product, long imageId, String path, String alternative) {
+        this.product = product;
+        this.imageId = imageId;
+        this.path = path;
+        this.alternative = alternative;
     }
 
-    public void setProductId(Product productId) {
-        this.productId = productId;
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public long getImageId() {
@@ -40,14 +41,6 @@ public class ProductImage {
         this.imageId = imageId;
     }
 
-    public String getAlternative() {
-        return alternative;
-    }
-
-    public void setAlternative(String alternative) {
-        this.alternative = alternative;
-    }
-
     public String getPath() {
         return path;
     }
@@ -56,13 +49,21 @@ public class ProductImage {
         this.path = path;
     }
 
+    public String getAlternative() {
+        return alternative;
+    }
+
+    public void setAlternative(String alternative) {
+        this.alternative = alternative;
+    }
+
     @Override
     public String toString() {
         return "ProductImage{" +
-                "productId=" + productId +
+                "product=" + product +
                 ", imageId=" + imageId +
-                ", alternative='" + alternative + '\'' +
                 ", path='" + path + '\'' +
+                ", alternative='" + alternative + '\'' +
                 '}';
     }
 }

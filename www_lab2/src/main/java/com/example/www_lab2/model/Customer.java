@@ -13,7 +13,10 @@ public class Customer {
     private String email;
     @Column(name = "cust_name")
     private String custName;
+    @Column(name = "phone")
     private String phone;
+    public Customer() {
+    }
 
     public Customer(long id, String address, String email, String custName, String phone) {
         this.id = id;
@@ -21,9 +24,6 @@ public class Customer {
         this.email = email;
         this.custName = custName;
         this.phone = phone;
-    }
-
-    public Customer() {
     }
 
     public long getId() {

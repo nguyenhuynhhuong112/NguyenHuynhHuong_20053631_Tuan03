@@ -10,29 +10,30 @@ public class ProductPrice {
     @Id
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product productId;
+    private Product product;
     @Id
     @Column(name = "pice_date_time")
     private Date priceDateTime;
+    @Column(name = "note", length = 255)
     private String note;
+    @Column(name = "price")
     private double price;
+    public ProductPrice() {
+    }
 
-    public ProductPrice(Product productId, Date priceDateTime, String note, double price) {
-        this.productId = productId;
+    public ProductPrice(Product product, Date priceDateTime, String note, double price) {
+        this.product = product;
         this.priceDateTime = priceDateTime;
         this.note = note;
         this.price = price;
     }
 
-    public ProductPrice() {
+    public Product getProduct() {
+        return product;
     }
 
-    public Product getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Product productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Date getPriceDateTime() {
@@ -62,7 +63,7 @@ public class ProductPrice {
     @Override
     public String toString() {
         return "ProductPrice{" +
-                "productId=" + productId +
+                "product=" + product +
                 ", priceDateTime=" + priceDateTime +
                 ", note='" + note + '\'' +
                 ", price=" + price +
